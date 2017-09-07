@@ -18,9 +18,6 @@ class SendToMulty extends commando.Command {
 
 		args = args.split(" ");
 
-
-
-		//console.log(args[0]);
 		let member = message.mentions.members.array();
 
 		let text = '';
