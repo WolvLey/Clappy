@@ -21,14 +21,14 @@ class SendToMulty extends commando.Command {
 		args = args.split(" ")
 		let member = message.mentions.members.array()
 
-		for (var i = member.length; i < args.length; i++) {
+		for (let i = member.length; i < args.length; i++) {
 			text += args[i];
 			if (i < args.length - 1) {
 				text += ' '
 			}
 		}
 
-		for (var i = 0; i < member.length; i++) {
+		for (let i = 0; i < member.length; i++) {
 			member[i].send(message.author+": "+text)
 		}
 		message.delete(3000)

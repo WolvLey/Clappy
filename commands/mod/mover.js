@@ -17,7 +17,7 @@ class Mover extends commando.Command {
 	async run(message, args) {
 		let inidUser = message.author
 
-		if (message.member.roles.has('168653588359413760')) {
+		if (!(message.member.roles.has('168653588359413760'))) {
 			message.reply("You have not necessary rights!")
 			return
 		}

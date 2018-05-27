@@ -14,7 +14,7 @@ bot.on('ready', () => {
 
 /**greet new member*/
 /* bot.on('guildMemberAdd', member => {
-	// Send the message to the guilds default channel (usaually #general), mentioning the member
+	// Send the message to the guilds default channel (usually #general), mentioning the member
 	member.send(`Welcome to the server, ${member}! 
 					Regeln:
 						${rules}`) 
@@ -28,8 +28,5 @@ bot.registry.registerDefaults()
 
 bot.registry.registerCommandsIn(path.join(__dirname, "commands"))
 /***************************************************************************************************/
-
-// let destChannel = bot.channels.every()
-// console.log(destChannel, bot)
 
 bot.login(settings.discord_token).catch((e) => console.error(e))

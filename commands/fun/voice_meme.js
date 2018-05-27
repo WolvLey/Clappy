@@ -12,6 +12,7 @@ class VoiceMemeCommand extends commando.Command {
 	}
 
 	async run(message, args) {
+		return
 		message.channel.send(args, { tts: true });
 	}
 }
