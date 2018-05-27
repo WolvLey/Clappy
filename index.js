@@ -32,4 +32,4 @@ bot.registry.registerCommandsIn(path.join(__dirname, "commands"))
 // let destChannel = bot.channels.every()
 // console.log(destChannel, bot)
 
-bot.login(settings.token).catch((e) => console.error(e)) 
+bot.login(settings.discord_token).catch((e) => console.error(e))
