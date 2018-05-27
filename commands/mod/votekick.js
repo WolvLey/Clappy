@@ -22,7 +22,7 @@ class VoteToKick extends commando.Command {
         let member = message.mentions.members.first();
 
         //TODO: forbid serveral names
-        if (args.length <= 0) {
+        if (args.length <= 0 && args.length >0) {
             message.reply('bitte Namen angeben | !vkick [Name]');
             return;
         }

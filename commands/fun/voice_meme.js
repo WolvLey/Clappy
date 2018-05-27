@@ -1,12 +1,13 @@
 const commando = require('discord.js-commando');
 
+
 class VoiceMemeCommand extends commando.Command {
 	constructor(client) {
 		super(client, {
 			name: 'meme',
 			group: 'fun',
 			memberName: 'meme',
-			description: 'Shout out a random meme'
+			description: 'Comming soon'
 		});
 	}
 

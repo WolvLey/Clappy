@@ -11,29 +11,27 @@ class SendToMulty extends commando.Command {
 	}
 
 	async run(message, args) {
-
+		let text = ''
+		
 		if (args.length === 0) {
-			message.reply('!send @Nutzer1 @Nutzer2 Deine Nachricht die du senden willst.');
+			message.reply('!send @Nutzer1 @Nutzer2 ... Deine Nachricht die du senden willst.')
+			return
 		}
 
-		args = args.split(" ");
-
-		let member = message.mentions.members.array();
-
-		let text = '';
+		args = args.split(" ")
+		let member = message.mentions.members.array()
 
 		for (var i = member.length; i < args.length; i++) {
 			text += args[i];
 			if (i < args.length - 1) {
-				text += ' ';
+				text += ' '
 			}
 		}
 
-
 		for (var i = 0; i < member.length; i++) {
-			member[i].send(message.author+": "+text);
+			member[i].send(message.author+": "+text)
 		}
-		message.delete(3000);
+		message.delete(3000)
 	}
 }
-module.exports = SendToMulty;
+module.exports = SendToMulty
