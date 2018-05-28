@@ -25,10 +25,10 @@ class Nitrado extends commando.Command {
 
 		switch (args) {
 			case 'playerlist':
-				this.printPlayerList()
+				this.printPlayerList(message)
 				break
 			case 'restart':
-				this.restartServer()
+				this.restartServer(message)
 				break
 			default:
 				message.reply(`Usage: !nitrado [playerlist/restart]`)
@@ -36,16 +36,16 @@ class Nitrado extends commando.Command {
 		}
 	}
 
-	printPlayerList() {
+	printPlayerList(message) {
 		let playersOnline = ''
 		let url = `https://api.nitrado.net/services/2491626/gameservers/games/players?access_token=${settings.nitrado_token}`
 		this.httpsGet(url, (resp) => {
 			if (resp.status === 'success') {
 				resp.data.players.forEach((item, i, array) => {
 					if (i === array.length - 1) {
-						playersOnline = `${item.name}`
+						playersOnline += `${item.name}`
 					} else {
-						playersOnline = `${item.name}, `
+						playersOnline += `${item.name}, `
 					}
 				})
 
@@ -55,13 +55,13 @@ class Nitrado extends commando.Command {
 	}
 
 	//TODO: Implement message like restartServer(message)?
-	restartServer() {
+	restartServer(message) {
 		if (!(message.member.roles.has('168653588359413760'))) {
 			message.reply('You have not necessary rights!')
 			return
 		}
 
-		let url = `https://api.nitrado.net/services/:id/gameservers/restart?access_token=${settings.nitrado_token}`
+		let url = `https://api.nitrado.net/services/2491626/gameservers/restart?access_token=${settings.nitrado_token}`
 
 		this.httpsGet(url, (resp) => {
 			message.reply(resp.message)
