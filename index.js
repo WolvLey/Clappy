@@ -3,13 +3,31 @@ const bot = new commando.Client()
 const path = require('path')
 
 //const util = require('./utils.js') 
-const LocalStorage = require("node-localstorage").LocalStorage
+const LocalStorage = require('node-localstorage').LocalStorage
 localStorage = new LocalStorage('./scratch')
 
 const settings = require('./settings.json')
 
 bot.on('ready', () => {
 	console.log(`${bot.user.tag} is Ready to go`)
+})
+
+bot.on('guildMemberRemove', (member) => {
+
+	let isCoreMember=false
+	let guild = member.guild
+
+	settings.core_member.forEach((id)=>{
+		if (member.id===id){
+			isCoreMember=true
+			return
+		}
+	})
+
+	if (isCoreMember){
+		guild.addMember(member)
+			.catch(e=>console.log(e))
+	}
 })
 
 /**greet new member*/
@@ -26,7 +44,7 @@ bot.registry
 
 bot.registry.registerDefaults()
 
-bot.registry.registerCommandsIn(path.join(__dirname, "commands"))
+bot.registry.registerCommandsIn(path.join(__dirname, 'commands'))
 /***************************************************************************************************/
 
 bot.login(settings.discord_token).catch((e) => console.error(e))
